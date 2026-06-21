@@ -4,6 +4,7 @@
     <string name="tagline">Senin sunucun. Senin gizliliğin.</string>
 
     <string name="continue_with_phone">Telefonla Devam Et</string>
+    <string name="continue_with_own_server">Kendi Sunucumla Giriş</string>
     <string name="sign_in_business">İşletme Hesabımla Giriş</string>
     <string name="terms_blurb">Devam ederek Gizlilik Politikası ve Destek sayfalarımızı kabul etmiş olursun.</string>
 

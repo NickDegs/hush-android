@@ -4,6 +4,7 @@
     <string name="tagline">Ваш сервер. Ваша приватность.</string>
 
     <string name="continue_with_phone">Продолжить по телефону</string>
+    <string name="continue_with_own_server">Продолжить с моим сервером</string>
     <string name="sign_in_business">Войти с бизнес-аккаунтом</string>
     <string name="terms_blurb">Продолжая, вы принимаете нашу Политику конфиденциальности и страницы поддержки.</string>
 

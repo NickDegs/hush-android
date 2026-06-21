@@ -4,6 +4,7 @@
     <string name="tagline">خادمك. خصوصيتك.</string>
 
     <string name="continue_with_phone">المتابعة عبر الهاتف</string>
+    <string name="continue_with_own_server">المتابعة بخادمي</string>
     <string name="sign_in_business">تسجيل الدخول بحساب الأعمال</string>
     <string name="terms_blurb">بالمتابعة، فإنك توافق على سياسة الخصوصية وصفحات الدعم.</string>
 

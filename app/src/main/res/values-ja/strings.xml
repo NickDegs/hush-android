@@ -4,6 +4,7 @@
     <string name="tagline">あなたのサーバー。あなたのプライバシー。</string>
 
     <string name="continue_with_phone">電話番号で続行</string>
+    <string name="continue_with_own_server">自分のサーバーで続行</string>
     <string name="sign_in_business">ビジネスアカウントでログイン</string>
     <string name="terms_blurb">続行するとプライバシーポリシーとサポートに同意したことになります。</string>
 

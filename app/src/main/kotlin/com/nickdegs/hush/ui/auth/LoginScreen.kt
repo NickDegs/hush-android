@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Dns
 import androidx.compose.material.icons.filled.Forum
 import androidx.compose.material.icons.filled.PhoneAndroid
 import androidx.compose.material3.*
@@ -24,7 +25,7 @@ import com.nickdegs.hush.ui.theme.Blue
 import com.nickdegs.hush.ui.theme.Violet
 
 @Composable
-fun LoginScreen(onPhone: () -> Unit) {
+fun LoginScreen(onPhone: () -> Unit, onMatrixLogin: () -> Unit) {
     Box(Modifier.fillMaxSize()) {
         LiquidBackground()
         Column(
@@ -78,7 +79,20 @@ fun LoginScreen(onPhone: () -> Unit) {
                 Text(stringResource(R.string.continue_with_phone), fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
             }
 
-            Spacer(Modifier.height(28.dp))
+            Spacer(Modifier.height(12.dp))
+
+            // İkincil eylem: Kendi sunucumla giriş
+            TextButton(onClick = onMatrixLogin) {
+                Icon(Icons.Filled.Dns, null, modifier = Modifier.size(18.dp))
+                Spacer(Modifier.width(6.dp))
+                Text(
+                    stringResource(R.string.continue_with_own_server),
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.75f)
+                )
+            }
+
+            Spacer(Modifier.height(20.dp))
             Text(
                 stringResource(R.string.terms_blurb),
                 fontSize = 11.sp,

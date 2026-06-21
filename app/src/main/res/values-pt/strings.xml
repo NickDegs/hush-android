@@ -4,6 +4,7 @@
     <string name="tagline">Seu servidor. Sua privacidade.</string>
 
     <string name="continue_with_phone">Continuar com telefone</string>
+    <string name="continue_with_own_server">Continuar com meu servidor</string>
     <string name="sign_in_business">Entrar com conta empresarial</string>
     <string name="terms_blurb">Ao continuar você aceita nossa Política de Privacidade e Suporte.</string>
 

@@ -5,6 +5,7 @@
 
     <!-- Login -->
     <string name="continue_with_phone">Continue with Phone</string>
+    <string name="continue_with_own_server">Continue with My Own Server</string>
     <string name="sign_in_business">Sign in with Business Account</string>
     <string name="terms_blurb">By continuing you accept our Privacy Policy and Support pages.</string>
 

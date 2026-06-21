@@ -4,6 +4,7 @@
     <string name="tagline">Ton serveur. Ta confidentialité.</string>
 
     <string name="continue_with_phone">Continuer avec le téléphone</string>
+    <string name="continue_with_own_server">Continuer avec mon serveur</string>
     <string name="sign_in_business">Se connecter avec un compte pro</string>
     <string name="terms_blurb">En continuant, tu acceptes notre Politique de confidentialité et nos pages d\'assistance.</string>
 

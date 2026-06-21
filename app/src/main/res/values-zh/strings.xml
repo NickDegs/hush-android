@@ -4,6 +4,7 @@
     <string name="tagline">您的服务器。您的隐私。</string>
 
     <string name="continue_with_phone">使用手机号继续</string>
+    <string name="continue_with_own_server">使用我自己的服务器继续</string>
     <string name="sign_in_business">使用企业账号登录</string>
     <string name="terms_blurb">继续即表示您接受我们的隐私政策和支持页面。</string>
 

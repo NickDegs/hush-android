@@ -9,6 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.nickdegs.hush.core.auth.Network
 import com.nickdegs.hush.core.auth.StartReq
 import com.nickdegs.hush.core.auth.VerifyReq
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -84,6 +86,57 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             true
         } catch (e: Exception) {
             _state.value = _state.value.copy(errorMessage = e.localizedMessage)
+            false
+        }
+    }
+
+    // MARK: - Matrix homeserver login (m.login.password)
+
+    suspend fun loginWithMatrixCredentials(homeserver: String, username: String, password: String): Boolean {
+        var hs = homeserver.trim()
+        if (!hs.startsWith("http://", true) && !hs.startsWith("https://", true)) hs = "https://$hs"
+        if (hs.endsWith("/")) hs = hs.dropLast(1)
+
+        return try {
+            val client = okhttp3.OkHttpClient.Builder().build()
+            // Discovery (best-effort) — yoksa user-girilen URL'i kullan
+            val discovered = runCatching {
+                val req = okhttp3.Request.Builder()
+                    .url("$hs/.well-known/matrix/client").build()
+                client.newCall(req).execute().use { r ->
+                    if (r.isSuccessful) {
+                        val json = kotlinx.serialization.json.Json.parseToJsonElement(r.body?.string().orEmpty())
+                        val baseUrl = (json as? kotlinx.serialization.json.JsonObject)
+                            ?.get("m.homeserver")
+                            ?.let { it as? kotlinx.serialization.json.JsonObject }
+                            ?.get("base_url")?.toString()?.trim('"')
+                        baseUrl?.trimEnd('/')
+                    } else null
+                }
+            }.getOrNull()
+            if (!discovered.isNullOrEmpty()) hs = discovered
+
+            // m.login.password — MAS compat'ta da çalışır
+            val localpart = if (username.startsWith("@")) username.substringAfter("@").substringBefore(":") else username
+            val body = """{"type":"m.login.password","identifier":{"type":"m.id.user","user":"$localpart"},"password":${kotlinx.serialization.json.Json.encodeToString(kotlinx.serialization.json.JsonElement.serializer(), kotlinx.serialization.json.JsonPrimitive(password))},"initial_device_display_name":"Hush Android"}"""
+            val req = okhttp3.Request.Builder()
+                .url("$hs/_matrix/client/v3/login")
+                .post(body.toRequestBody("application/json".toMediaType()))
+                .build()
+            val resp = client.newCall(req).execute()
+            val text = resp.body?.string().orEmpty()
+            resp.close()
+            if (!resp.isSuccessful) {
+                _state.value = _state.value.copy(errorMessage = "Giriş reddedildi (${resp.code})")
+                return false
+            }
+            val j = kotlinx.serialization.json.Json.parseToJsonElement(text) as kotlinx.serialization.json.JsonObject
+            val uid = j["user_id"]?.toString()?.trim('"') ?: return false
+            val at = j["access_token"]?.toString()?.trim('"') ?: return false
+            persistSession(uid, at, hs, username)
+            true
+        } catch (e: Exception) {
+            _state.value = _state.value.copy(errorMessage = e.localizedMessage ?: "Bağlantı hatası")
             false
         }
     }

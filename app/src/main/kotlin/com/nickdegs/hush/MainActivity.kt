@@ -16,6 +16,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nickdegs.hush.core.store.AppViewModel
 import com.nickdegs.hush.ui.auth.LoginScreen
+import com.nickdegs.hush.ui.auth.MatrixLoginScreen
 import com.nickdegs.hush.ui.auth.OtpVerifyScreen
 import com.nickdegs.hush.ui.auth.PhoneSignupScreen
 import com.nickdegs.hush.ui.home.HomeScreen
@@ -53,7 +54,17 @@ private fun HushNavGraph(viewModel: AppViewModel) {
     NavHost(navController = nav, startDestination = startDest) {
         composable("login") {
             LoginScreen(
-                onPhone = { nav.navigate("phone") }
+                onPhone = { nav.navigate("phone") },
+                onMatrixLogin = { nav.navigate("matrix-login") },
+            )
+        }
+        composable("matrix-login") {
+            MatrixLoginScreen(
+                vm = viewModel,
+                onSuccess = {
+                    nav.navigate("home") { popUpTo("login") { inclusive = true } }
+                },
+                onBack = { nav.popBackStack() },
             )
         }
         composable("phone") {

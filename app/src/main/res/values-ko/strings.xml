@@ -4,6 +4,7 @@
     <string name="tagline">당신의 서버. 당신의 프라이버시.</string>
 
     <string name="continue_with_phone">전화번호로 계속</string>
+    <string name="continue_with_own_server">내 서버로 계속</string>
     <string name="sign_in_business">비즈니스 계정으로 로그인</string>
     <string name="terms_blurb">계속하면 개인정보처리방침과 지원 페이지에 동의하게 됩니다.</string>
 
