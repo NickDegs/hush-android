@@ -52,4 +52,18 @@
     <string name="error_invalid_phone">유효하지 않은 번호. 예: +905346065072</string>
     <string name="error_empty_field">필드는 비워둘 수 없습니다</string>
     <string name="error_network">네트워크 오류</string>
+
+    <!-- Matrix Login -->
+    <string name="matrix_login_title">내 서버로 로그인</string>
+    <string name="matrix_login_heading">기존 Matrix 계정으로 로그인</string>
+    <string name="matrix_login_subtitle">자체 호스팅 Synapse, matrix.org 또는 개인 서버 — 무엇이든 가능합니다.</string>
+    <string name="server_address">서버 주소</string>
+    <string name="server_address_hint">matrix.org · chat.mysite.com</string>
+    <string name="username">사용자명</string>
+    <string name="username_hint">@user:matrix.org</string>
+    <string name="password">비밀번호</string>
+    <string name="matrix_login_submit">로그인</string>
+    <string name="matrix_login_default_hint">비워두면 Hush Cloud (nickdegs.duckdns.org) 사용.</string>
+    <string name="error_empty_credentials">사용자명과 비밀번호는 비울 수 없습니다</string>
+    <string name="error_login_failed">로그인 실패</string>
 </resources>

@@ -7,6 +7,20 @@
     <string name="continue_with_phone">Continue with Phone</string>
     <string name="continue_with_own_server">Continue with My Own Server</string>
     <string name="sign_in_business">Sign in with Business Account</string>
+
+    <!-- Matrix Login (kendi sunucum) -->
+    <string name="matrix_login_title">Sign in with My Server</string>
+    <string name="matrix_login_heading">Sign in to your existing Matrix account</string>
+    <string name="matrix_login_subtitle">Self-hosted Synapse, matrix.org, or your personal server — any of them works.</string>
+    <string name="server_address">Server address</string>
+    <string name="server_address_hint">matrix.org · chat.mysite.com</string>
+    <string name="username">Username</string>
+    <string name="username_hint">@user:matrix.org</string>
+    <string name="password">Password</string>
+    <string name="matrix_login_submit">Sign In</string>
+    <string name="matrix_login_default_hint">Leave empty to use Hush Cloud (nickdegs.duckdns.org).</string>
+    <string name="error_empty_credentials">Username and password cannot be empty</string>
+    <string name="error_login_failed">Sign in failed</string>
     <string name="terms_blurb">By continuing you accept our Privacy Policy and Support pages.</string>
 
     <!-- Phone signup -->

@@ -52,4 +52,18 @@
     <string name="error_invalid_phone">電話番号が無効です。例: +905346065072</string>
     <string name="error_empty_field">フィールドは空にできません</string>
     <string name="error_network">ネットワークエラー</string>
+
+    <!-- Matrix Login -->
+    <string name="matrix_login_title">自分のサーバーでログイン</string>
+    <string name="matrix_login_heading">既存のMatrixアカウントでサインイン</string>
+    <string name="matrix_login_subtitle">自己ホストSynapse、matrix.org、または個人サーバー — どれでもOK。</string>
+    <string name="server_address">サーバーアドレス</string>
+    <string name="server_address_hint">matrix.org · chat.mysite.com</string>
+    <string name="username">ユーザー名</string>
+    <string name="username_hint">@user:matrix.org</string>
+    <string name="password">パスワード</string>
+    <string name="matrix_login_submit">サインイン</string>
+    <string name="matrix_login_default_hint">空欄ならHush Cloud (nickdegs.duckdns.org)を使用。</string>
+    <string name="error_empty_credentials">ユーザー名とパスワードを入力してください</string>
+    <string name="error_login_failed">サインインに失敗しました</string>
 </resources>

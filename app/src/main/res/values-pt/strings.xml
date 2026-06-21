@@ -52,4 +52,18 @@
     <string name="error_invalid_phone">Telefone inválido. Exemplo: +905346065072</string>
     <string name="error_empty_field">Campo não pode estar vazio</string>
     <string name="error_network">Erro de rede</string>
+
+    <!-- Matrix Login -->
+    <string name="matrix_login_title">Entrar com meu servidor</string>
+    <string name="matrix_login_heading">Entre com sua conta Matrix existente</string>
+    <string name="matrix_login_subtitle">Synapse auto-hospedado, matrix.org ou seu servidor pessoal — qualquer um funciona.</string>
+    <string name="server_address">Endereço do servidor</string>
+    <string name="server_address_hint">matrix.org · chat.meusite.com</string>
+    <string name="username">Usuário</string>
+    <string name="username_hint">@usuario:matrix.org</string>
+    <string name="password">Senha</string>
+    <string name="matrix_login_submit">Entrar</string>
+    <string name="matrix_login_default_hint">Deixe vazio para usar Hush Cloud (nickdegs.duckdns.org).</string>
+    <string name="error_empty_credentials">Usuário e senha não podem estar vazios</string>
+    <string name="error_login_failed">Falha no login</string>
 </resources>

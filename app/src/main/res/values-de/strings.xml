@@ -52,4 +52,18 @@
     <string name="error_invalid_phone">Ungültige Nummer. Beispiel: +905346065072</string>
     <string name="error_empty_field">Feld darf nicht leer sein</string>
     <string name="error_network">Netzwerkfehler</string>
+
+    <!-- Matrix Login -->
+    <string name="matrix_login_title">Mit meinem Server anmelden</string>
+    <string name="matrix_login_heading">Melde dich mit deinem Matrix-Konto an</string>
+    <string name="matrix_login_subtitle">Selbst gehostetes Synapse, matrix.org oder dein persönlicher Server — alles funktioniert.</string>
+    <string name="server_address">Serveradresse</string>
+    <string name="server_address_hint">matrix.org · chat.meineseite.de</string>
+    <string name="username">Benutzername</string>
+    <string name="username_hint">@benutzer:matrix.org</string>
+    <string name="password">Passwort</string>
+    <string name="matrix_login_submit">Anmelden</string>
+    <string name="matrix_login_default_hint">Leer lassen für Hush Cloud (nickdegs.duckdns.org).</string>
+    <string name="error_empty_credentials">Benutzername und Passwort dürfen nicht leer sein</string>
+    <string name="error_login_failed">Anmeldung fehlgeschlagen</string>
 </resources>

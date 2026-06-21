@@ -52,4 +52,18 @@
     <string name="error_invalid_phone">Неверный номер. Пример: +905346065072</string>
     <string name="error_empty_field">Поле не может быть пустым</string>
     <string name="error_network">Ошибка сети</string>
+
+    <!-- Matrix Login -->
+    <string name="matrix_login_title">Войти с моим сервером</string>
+    <string name="matrix_login_heading">Войдите в существующий аккаунт Matrix</string>
+    <string name="matrix_login_subtitle">Свой Synapse, matrix.org или личный сервер — подойдёт любой.</string>
+    <string name="server_address">Адрес сервера</string>
+    <string name="server_address_hint">matrix.org · chat.moisait.com</string>
+    <string name="username">Имя пользователя</string>
+    <string name="username_hint">@user:matrix.org</string>
+    <string name="password">Пароль</string>
+    <string name="matrix_login_submit">Войти</string>
+    <string name="matrix_login_default_hint">Оставьте пустым, чтобы использовать Hush Cloud (nickdegs.duckdns.org).</string>
+    <string name="error_empty_credentials">Имя пользователя и пароль не могут быть пустыми</string>
+    <string name="error_login_failed">Ошибка входа</string>
 </resources>

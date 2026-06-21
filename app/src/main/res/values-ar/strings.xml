@@ -52,4 +52,18 @@
     <string name="error_invalid_phone">رقم غير صالح. مثال: +905346065072</string>
     <string name="error_empty_field">الحقل لا يمكن أن يكون فارغًا</string>
     <string name="error_network">خطأ في الشبكة</string>
+
+    <!-- Matrix Login -->
+    <string name="matrix_login_title">تسجيل الدخول بخادمي</string>
+    <string name="matrix_login_heading">سجّل الدخول بحسابك في Matrix</string>
+    <string name="matrix_login_subtitle">Synapse مستضاف ذاتيًا أو matrix.org أو خادمك الشخصي — أيًا كان يعمل.</string>
+    <string name="server_address">عنوان الخادم</string>
+    <string name="server_address_hint">matrix.org · chat.mysite.com</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="username_hint">@user:matrix.org</string>
+    <string name="password">كلمة المرور</string>
+    <string name="matrix_login_submit">تسجيل الدخول</string>
+    <string name="matrix_login_default_hint">اتركه فارغًا لاستخدام Hush Cloud (nickdegs.duckdns.org).</string>
+    <string name="error_empty_credentials">اسم المستخدم وكلمة المرور مطلوبان</string>
+    <string name="error_login_failed">فشل تسجيل الدخول</string>
 </resources>

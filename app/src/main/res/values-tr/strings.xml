@@ -6,6 +6,20 @@
     <string name="continue_with_phone">Telefonla Devam Et</string>
     <string name="continue_with_own_server">Kendi Sunucumla Giriş</string>
     <string name="sign_in_business">İşletme Hesabımla Giriş</string>
+
+    <!-- Matrix Login -->
+    <string name="matrix_login_title">Kendi Sunucumla Giriş</string>
+    <string name="matrix_login_heading">Mevcut Matrix hesabınla giriş yap</string>
+    <string name="matrix_login_subtitle">Self-hosted Synapse, matrix.org veya kişisel sunucu — fark etmez.</string>
+    <string name="server_address">Sunucu adresi</string>
+    <string name="server_address_hint">matrix.org · chat.benimsite.com</string>
+    <string name="username">Kullanıcı adı</string>
+    <string name="username_hint">@kullanici:matrix.org</string>
+    <string name="password">Şifre</string>
+    <string name="matrix_login_submit">Giriş Yap</string>
+    <string name="matrix_login_default_hint">Boş bırakırsan Hush Cloud (nickdegs.duckdns.org) kullanılır.</string>
+    <string name="error_empty_credentials">Kullanıcı adı ve şifre boş olamaz</string>
+    <string name="error_login_failed">Giriş başarısız</string>
     <string name="terms_blurb">Devam ederek Gizlilik Politikası ve Destek sayfalarımızı kabul etmiş olursun.</string>
 
     <string name="phone_title">Telefon numaran</string>

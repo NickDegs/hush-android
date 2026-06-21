@@ -52,4 +52,18 @@
     <string name="error_invalid_phone">手机号无效。示例:+905346065072</string>
     <string name="error_empty_field">字段不能为空</string>
     <string name="error_network">网络错误</string>
+
+    <!-- Matrix Login -->
+    <string name="matrix_login_title">使用我的服务器登录</string>
+    <string name="matrix_login_heading">使用您现有的 Matrix 账号登录</string>
+    <string name="matrix_login_subtitle">自托管 Synapse、matrix.org 或个人服务器都可以。</string>
+    <string name="server_address">服务器地址</string>
+    <string name="server_address_hint">matrix.org · chat.mysite.com</string>
+    <string name="username">用户名</string>
+    <string name="username_hint">@user:matrix.org</string>
+    <string name="password">密码</string>
+    <string name="matrix_login_submit">登录</string>
+    <string name="matrix_login_default_hint">留空使用 Hush Cloud (nickdegs.duckdns.org)。</string>
+    <string name="error_empty_credentials">用户名和密码不能为空</string>
+    <string name="error_login_failed">登录失败</string>
 </resources>

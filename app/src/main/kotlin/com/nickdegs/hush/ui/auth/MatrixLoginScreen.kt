@@ -13,11 +13,13 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.nickdegs.hush.R
 import com.nickdegs.hush.core.store.AppViewModel
 import com.nickdegs.hush.ui.components.LiquidBackground
 import com.nickdegs.hush.ui.theme.Violet
@@ -43,7 +45,7 @@ fun MatrixLoginScreen(
             containerColor = androidx.compose.ui.graphics.Color.Transparent,
             topBar = {
                 CenterAlignedTopAppBar(
-                    title = { Text("Kendi Sunucumla Giriş", color = MaterialTheme.colorScheme.onBackground) },
+                    title = { Text(stringResource(R.string.matrix_login_title), color = MaterialTheme.colorScheme.onBackground) },
                     colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                         containerColor = androidx.compose.ui.graphics.Color.Transparent
                     ),
@@ -75,14 +77,14 @@ fun MatrixLoginScreen(
                 )
                 Spacer(Modifier.height(12.dp))
                 Text(
-                    "Mevcut Matrix hesabınla giriş yap",
+                    stringResource(R.string.matrix_login_heading),
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 18.sp,
                     color = MaterialTheme.colorScheme.onBackground
                 )
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    "Self-hosted Synapse, matrix.org veya kişisel sunucu — fark etmez.",
+                    stringResource(R.string.matrix_login_subtitle),
                     fontSize = 13.sp,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.65f)
                 )
@@ -91,8 +93,8 @@ fun MatrixLoginScreen(
                 OutlinedTextField(
                     value = homeserver,
                     onValueChange = { homeserver = it },
-                    label = { Text("Sunucu adresi") },
-                    placeholder = { Text("matrix.org · chat.benimsite.com") },
+                    label = { Text(stringResource(R.string.server_address)) },
+                    placeholder = { Text(stringResource(R.string.server_address_hint)) },
                     leadingIcon = { Icon(Icons.Filled.Dns, null) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
@@ -103,8 +105,8 @@ fun MatrixLoginScreen(
                 OutlinedTextField(
                     value = username,
                     onValueChange = { username = it },
-                    label = { Text("Kullanıcı adı") },
-                    placeholder = { Text("@kullanici:matrix.org") },
+                    label = { Text(stringResource(R.string.username)) },
+                    placeholder = { Text(stringResource(R.string.username_hint)) },
                     leadingIcon = { Icon(Icons.Filled.Person, null) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
@@ -114,7 +116,7 @@ fun MatrixLoginScreen(
                 OutlinedTextField(
                     value = password,
                     onValueChange = { password = it },
-                    label = { Text("Şifre") },
+                    label = { Text(stringResource(R.string.password)) },
                     leadingIcon = { Icon(Icons.Filled.Lock, null) },
                     visualTransformation = PasswordVisualTransformation(),
                     singleLine = true,
@@ -131,10 +133,12 @@ fun MatrixLoginScreen(
                 }
 
                 Spacer(Modifier.height(24.dp))
+                val emptyMsg = stringResource(R.string.error_empty_credentials)
+                val failMsg = stringResource(R.string.error_login_failed)
                 Button(
                     onClick = {
                         if (username.isBlank() || password.isBlank()) {
-                            errorText = "Kullanıcı adı ve şifre boş olamaz"
+                            errorText = emptyMsg
                             return@Button
                         }
                         loading = true
@@ -146,7 +150,7 @@ fun MatrixLoginScreen(
                                 password = password,
                             )
                             loading = false
-                            if (ok) onSuccess() else errorText = vm.uiState.value.errorMessage ?: "Giriş başarısız"
+                            if (ok) onSuccess() else errorText = vm.uiState.value.errorMessage ?: failMsg
                         }
                     },
                     enabled = !loading,
@@ -160,11 +164,11 @@ fun MatrixLoginScreen(
                         modifier = Modifier.size(20.dp),
                         color = MaterialTheme.colorScheme.onPrimary
                     )
-                    else Text("Giriş Yap", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
+                    else Text(stringResource(R.string.matrix_login_submit), fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
                 }
                 Spacer(Modifier.height(14.dp))
                 Text(
-                    "Boş bırakırsan Hush Cloud (nickdegs.duckdns.org) kullanılır.",
+                    stringResource(R.string.matrix_login_default_hint),
                     fontSize = 11.sp,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.55f),
                 )
