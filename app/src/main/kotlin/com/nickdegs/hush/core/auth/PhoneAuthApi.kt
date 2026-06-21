@@ -4,10 +4,8 @@ import kotlinx.serialization.Serializable
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-/**
- * nickdegs.com/api/phone/* — Twilio Verify ile telefon kayıt/giriş.
- * iOS PhoneAuthClient'in birebir karşılığı.
- */
+// nickdegs.com/api/phone/{start,verify} — Twilio Verify ile telefon kayıt/giriş.
+// iOS PhoneAuthClient'in birebir karşılığı.
 interface PhoneAuthApi {
     @POST("api/phone/start")
     suspend fun start(@Body req: StartReq): StartResp
