@@ -1,0 +1,32 @@
+Hush is a privacy-first messenger built on the open Matrix protocol. Your conversations live on your own server (or ours), not in a third-party cloud — so nobody can sell, profile, or harvest them.
+
+WHY HUSH
+• Your server, your rules — host Matrix yourself, or sign in with phone number to use ours.
+• End-to-end encrypted by default for direct chats, groups and communities.
+• No ads. No tracking. No analytics on your messages.
+• Built for businesses too — every paying business gets its own private Matrix instance.
+
+FEATURES
+• 1-to-1, group and channel chats
+• Communities (Spaces) — organize multiple rooms under one umbrella
+• Threads, reactions, polls, message search
+• Voice & video calls (WebRTC)
+• Push notifications via Google FCM
+• Adaptive Material You design — your phone's accent colour, your way
+• 12 languages: English, Turkish, Spanish, German, French, Portuguese, Italian, Russian, Japanese, Chinese, Korean, Arabic
+
+WHO IT'S FOR
+• Anyone who wants a clean, modern messenger without the surveillance trade-off
+• Small and large businesses who want a fully-owned, white-labelled Matrix workspace
+• Teams who prefer Matrix over Slack/Discord/WhatsApp for compliance reasons
+
+PHONE SIGN-UP
+Sign up with your phone number and a 6-digit SMS code. No address book scraping — your contacts are yours.
+
+PREMIUM (HUSH PRO — $29.99/year)
+• Unlimited message history search
+• Priority support
+• Custom server provisioning credits
+• Earlier access to new features
+
+Hush is open about how it works. Privacy Policy and Terms are at nickdegs.com/hush.

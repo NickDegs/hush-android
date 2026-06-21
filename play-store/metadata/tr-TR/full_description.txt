@@ -1,0 +1,32 @@
+Hush, açık Matrix protokolü üzerine kurulu, gizliliğe odaklı bir mesajlaşma uygulamasıdır. Konuşmaların üçüncü taraf bir bulutta değil, kendi sunucunda (veya bizim sunucumuzda) tutulur — kimse satamaz, profillemez, hasat edemez.
+
+NEDEN HUSH
+• Senin sunucun, senin kuralların — Matrix'i kendin barındır ya da bizim sunucumuza telefon numarasıyla giriş yap.
+• Birebir sohbet, grup ve topluluklarda varsayılan uçtan uca şifreleme.
+• Reklam yok. Takip yok. Mesajlarında analitik yok.
+• İşletmeler için de hazır — ödeme yapan her işletme kendi özel Matrix örneğine sahip olur.
+
+ÖZELLİKLER
+• Birebir, grup ve kanal sohbetleri
+• Topluluklar (Spaces) — birden fazla odayı tek çatı altında düzenle
+• Konu başlıkları, tepkiler, anketler, mesaj arama
+• Sesli ve görüntülü görüşme (WebRTC)
+• Google FCM ile anlık bildirimler
+• Material You uyumlu uyarlanabilir tasarım — telefonunun renk şemasını yansıtır
+• 12 dil: Türkçe, İngilizce, İspanyolca, Almanca, Fransızca, Portekizce, İtalyanca, Rusça, Japonca, Çince, Korece, Arapça
+
+KİMLER İÇİN
+• Gözetimsiz, modern ve temiz bir mesajlaşma uygulaması isteyenler
+• Tamamen kendine ait, beyaz etiketli bir Matrix çalışma alanı isteyen küçük ve büyük işletmeler
+• Uyumluluk nedeniyle Slack/Discord/WhatsApp yerine Matrix'i tercih eden ekipler
+
+TELEFON İLE KAYIT
+Telefon numaran ve 6 haneli SMS kodu ile kayıt ol. Rehber taranmaz — kişilerin sende kalır.
+
+PREMIUM (HUSH PRO — yıllık 29,99 USD)
+• Sınırsız mesaj geçmişi araması
+• Öncelikli destek
+• Özel sunucu sağlama kredileri
+• Yeni özelliklere erken erişim
+
+Hush'un nasıl çalıştığı şeffaftır. Gizlilik Politikası ve Şartlar: nickdegs.com/hush

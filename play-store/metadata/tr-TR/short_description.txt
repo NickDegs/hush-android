@@ -1,0 +1,1 @@
+Kendi sunucunda güvenli mesajlaşma. Mesajların sende kalır.

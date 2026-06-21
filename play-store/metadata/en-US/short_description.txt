@@ -1,0 +1,1 @@
+Secure messaging on your own server. Your messages stay private.

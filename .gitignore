@@ -24,3 +24,9 @@ app/keystore.jks
 app/keystore.properties
 app/google-services.json
 *.keystore
+
+# Play Store outputs (generated)
+play-store/screens/
+play-store/hi_res_icon_512.png
+play-store/feature_graphic_1024x500.png
+play-store/_tmp.svg
