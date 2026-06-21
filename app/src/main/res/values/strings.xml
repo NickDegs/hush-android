@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hush</string>
+    <string name="tagline">Your server. Your privacy.</string>
+
+    <!-- Login -->
+    <string name="continue_with_phone">Continue with Phone</string>
+    <string name="sign_in_business">Sign in with Business Account</string>
+    <string name="terms_blurb">By continuing you accept our Privacy Policy and Support pages.</string>
+
+    <!-- Phone signup -->
+    <string name="phone_title">Your phone number</string>
+    <string name="phone_subtitle">We will send you a 6-digit code to verify your account.</string>
+    <string name="phone_hint">5XX XXX XX XX</string>
+    <string name="name_hint">Your name (optional)</string>
+    <string name="send_sms">Send SMS Code</string>
+
+    <!-- OTP -->
+    <string name="otp_title">Verify Code</string>
+    <string name="otp_subtitle">Enter the 6-digit code we sent to %s.</string>
+    <string name="otp_resend">Resend code</string>
+    <string name="otp_resend_in">Resend code · %ds</string>
+    <string name="otp_verify">Verify and Continue</string>
+
+    <!-- Home -->
+    <string name="tab_chats">Chats</string>
+    <string name="tab_channels">Channels</string>
+    <string name="tab_profile">Profile</string>
+    <string name="search_hint">Search</string>
+    <string name="new_chat">New Chat</string>
+    <string name="all_communities">All</string>
+    <string name="new_community">New Community</string>
+
+    <!-- Chat -->
+    <string name="message_hint">Message…</string>
+    <string name="reply">Reply</string>
+    <string name="react">React</string>
+    <string name="reply_in_thread">Reply in Thread</string>
+    <string name="copy">Copy</string>
+    <string name="delete">Delete</string>
+    <string name="search_messages">Search Messages</string>
+    <string name="create_poll">Create Poll</string>
+    <string name="room_info">Room Info</string>
+
+    <!-- Profile -->
+    <string name="settings">Settings</string>
+    <string name="font">Font</string>
+    <string name="notifications">Notifications</string>
+    <string name="privacy_security">Privacy &amp; Security</string>
+    <string name="storage_data">Storage &amp; Data</string>
+    <string name="version">Version</string>
+    <string name="server">Server</string>
+    <string name="logout">Log Out</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="delete_account_footer">Deleting your account permanently removes all your data from the server.</string>
+
+    <!-- Errors -->
+    <string name="error_invalid_phone">Invalid phone. Example: +905346065072</string>
+    <string name="error_empty_field">Field cannot be empty</string>
+    <string name="error_network">Network error</string>
+</resources>

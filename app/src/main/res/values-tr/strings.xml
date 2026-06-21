@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hush</string>
+    <string name="tagline">Senin sunucun. Senin gizliliğin.</string>
+
+    <string name="continue_with_phone">Telefonla Devam Et</string>
+    <string name="sign_in_business">İşletme Hesabımla Giriş</string>
+    <string name="terms_blurb">Devam ederek Gizlilik Politikası ve Destek sayfalarımızı kabul etmiş olursun.</string>
+
+    <string name="phone_title">Telefon numaran</string>
+    <string name="phone_subtitle">Hesabını doğrulamak için sana 6 haneli bir kod göndereceğiz.</string>
+    <string name="phone_hint">5XX XXX XX XX</string>
+    <string name="name_hint">Adın (isteğe bağlı)</string>
+    <string name="send_sms">SMS Kodunu Gönder</string>
+
+    <string name="otp_title">Kodu Doğrula</string>
+    <string name="otp_subtitle">%s numarasına gönderdiğimiz 6 haneli kodu gir.</string>
+    <string name="otp_resend">Kodu yeniden gönder</string>
+    <string name="otp_resend_in">Kodu yeniden gönder · %ds</string>
+    <string name="otp_verify">Doğrula ve Devam Et</string>
+
+    <string name="tab_chats">Sohbetler</string>
+    <string name="tab_channels">Kanallar</string>
+    <string name="tab_profile">Profil</string>
+    <string name="search_hint">Ara</string>
+    <string name="new_chat">Yeni Sohbet</string>
+    <string name="all_communities">Hepsi</string>
+    <string name="new_community">Yeni Topluluk</string>
+
+    <string name="message_hint">Mesaj…</string>
+    <string name="reply">Yanıtla</string>
+    <string name="react">Tepki Ver</string>
+    <string name="reply_in_thread">İplikte Yanıtla</string>
+    <string name="copy">Kopyala</string>
+    <string name="delete">Sil</string>
+    <string name="search_messages">Mesaj Ara</string>
+    <string name="create_poll">Anket Oluştur</string>
+    <string name="room_info">Oda Bilgisi</string>
+
+    <string name="settings">Ayarlar</string>
+    <string name="font">Yazı Tipi</string>
+    <string name="notifications">Bildirimler</string>
+    <string name="privacy_security">Gizlilik ve Güvenlik</string>
+    <string name="storage_data">Depolama ve Veri</string>
+    <string name="version">Sürüm</string>
+    <string name="server">Sunucu</string>
+    <string name="logout">Çıkış Yap</string>
+    <string name="delete_account">Hesabı Sil</string>
+    <string name="delete_account_footer">Hesabını silmek, sunucudaki tüm verilerini geri dönülmez biçimde kaldırır.</string>
+
+    <string name="error_invalid_phone">Geçersiz telefon. Örn: +905346065072</string>
+    <string name="error_empty_field">Alan boş bırakılamaz</string>
+    <string name="error_network">Bağlantı hatası</string>
+</resources>
