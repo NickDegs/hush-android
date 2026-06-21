@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hush</string>
+    <string name="tagline">Il tuo server. La tua privacy.</string>
+
+    <string name="continue_with_phone">Continua con telefono</string>
+    <string name="sign_in_business">Accedi con account aziendale</string>
+    <string name="terms_blurb">Continuando accetti l\'Informativa sulla privacy e il Supporto.</string>
+
+    <string name="phone_title">Il tuo numero di telefono</string>
+    <string name="phone_subtitle">Ti invieremo un codice di 6 cifre per verificare l\'account.</string>
+    <string name="phone_hint">5XX XXX XX XX</string>
+    <string name="name_hint">Il tuo nome (opzionale)</string>
+    <string name="send_sms">Invia codice SMS</string>
+
+    <string name="otp_title">Verifica codice</string>
+    <string name="otp_subtitle">Inserisci il codice di 6 cifre inviato a %s.</string>
+    <string name="otp_resend">Invia di nuovo</string>
+    <string name="otp_resend_in">Reinvia · %ds</string>
+    <string name="otp_verify">Verifica e continua</string>
+
+    <string name="tab_chats">Chat</string>
+    <string name="tab_channels">Canali</string>
+    <string name="tab_profile">Profilo</string>
+    <string name="search_hint">Cerca</string>
+    <string name="new_chat">Nuova chat</string>
+    <string name="all_communities">Tutte</string>
+    <string name="new_community">Nuova comunità</string>
+
+    <string name="message_hint">Messaggio…</string>
+    <string name="reply">Rispondi</string>
+    <string name="react">Reagisci</string>
+    <string name="reply_in_thread">Rispondi nel thread</string>
+    <string name="copy">Copia</string>
+    <string name="delete">Elimina</string>
+    <string name="search_messages">Cerca messaggi</string>
+    <string name="create_poll">Crea sondaggio</string>
+    <string name="room_info">Informazioni stanza</string>
+
+    <string name="settings">Impostazioni</string>
+    <string name="font">Carattere</string>
+    <string name="notifications">Notifiche</string>
+    <string name="privacy_security">Privacy e sicurezza</string>
+    <string name="storage_data">Archiviazione e dati</string>
+    <string name="version">Versione</string>
+    <string name="server">Server</string>
+    <string name="logout">Esci</string>
+    <string name="delete_account">Elimina account</string>
+    <string name="delete_account_footer">L\'eliminazione rimuove permanentemente tutti i dati dal server.</string>
+
+    <string name="error_invalid_phone">Numero non valido. Esempio: +905346065072</string>
+    <string name="error_empty_field">Il campo non può essere vuoto</string>
+    <string name="error_network">Errore di rete</string>
+</resources>

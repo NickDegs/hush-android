@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hush</string>
+    <string name="tagline">Seu servidor. Sua privacidade.</string>
+
+    <string name="continue_with_phone">Continuar com telefone</string>
+    <string name="sign_in_business">Entrar com conta empresarial</string>
+    <string name="terms_blurb">Ao continuar você aceita nossa Política de Privacidade e Suporte.</string>
+
+    <string name="phone_title">Seu número de telefone</string>
+    <string name="phone_subtitle">Enviaremos um código de 6 dígitos para verificar sua conta.</string>
+    <string name="phone_hint">5XX XXX XX XX</string>
+    <string name="name_hint">Seu nome (opcional)</string>
+    <string name="send_sms">Enviar código SMS</string>
+
+    <string name="otp_title">Verificar código</string>
+    <string name="otp_subtitle">Digite o código de 6 dígitos enviado para %s.</string>
+    <string name="otp_resend">Reenviar código</string>
+    <string name="otp_resend_in">Reenviar · %ds</string>
+    <string name="otp_verify">Verificar e continuar</string>
+
+    <string name="tab_chats">Conversas</string>
+    <string name="tab_channels">Canais</string>
+    <string name="tab_profile">Perfil</string>
+    <string name="search_hint">Buscar</string>
+    <string name="new_chat">Nova conversa</string>
+    <string name="all_communities">Todas</string>
+    <string name="new_community">Nova comunidade</string>
+
+    <string name="message_hint">Mensagem…</string>
+    <string name="reply">Responder</string>
+    <string name="react">Reagir</string>
+    <string name="reply_in_thread">Responder no tópico</string>
+    <string name="copy">Copiar</string>
+    <string name="delete">Excluir</string>
+    <string name="search_messages">Buscar mensagens</string>
+    <string name="create_poll">Criar enquete</string>
+    <string name="room_info">Informações da sala</string>
+
+    <string name="settings">Configurações</string>
+    <string name="font">Fonte</string>
+    <string name="notifications">Notificações</string>
+    <string name="privacy_security">Privacidade e Segurança</string>
+    <string name="storage_data">Armazenamento e Dados</string>
+    <string name="version">Versão</string>
+    <string name="server">Servidor</string>
+    <string name="logout">Sair</string>
+    <string name="delete_account">Excluir conta</string>
+    <string name="delete_account_footer">Excluir a conta remove permanentemente todos os dados do servidor.</string>
+
+    <string name="error_invalid_phone">Telefone inválido. Exemplo: +905346065072</string>
+    <string name="error_empty_field">Campo não pode estar vazio</string>
+    <string name="error_network">Erro de rede</string>
+</resources>

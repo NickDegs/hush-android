@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hush</string>
+    <string name="tagline">خادمك. خصوصيتك.</string>
+
+    <string name="continue_with_phone">المتابعة عبر الهاتف</string>
+    <string name="sign_in_business">تسجيل الدخول بحساب الأعمال</string>
+    <string name="terms_blurb">بالمتابعة، فإنك توافق على سياسة الخصوصية وصفحات الدعم.</string>
+
+    <string name="phone_title">رقم هاتفك</string>
+    <string name="phone_subtitle">سنرسل لك رمزًا من 6 أرقام للتحقق من حسابك.</string>
+    <string name="phone_hint">5XX XXX XX XX</string>
+    <string name="name_hint">اسمك (اختياري)</string>
+    <string name="send_sms">إرسال رمز SMS</string>
+
+    <string name="otp_title">تحقق من الرمز</string>
+    <string name="otp_subtitle">أدخل الرمز المكون من 6 أرقام المرسل إلى %s.</string>
+    <string name="otp_resend">إعادة إرسال الرمز</string>
+    <string name="otp_resend_in">إعادة الإرسال · %d ثانية</string>
+    <string name="otp_verify">تحقق ومتابعة</string>
+
+    <string name="tab_chats">المحادثات</string>
+    <string name="tab_channels">القنوات</string>
+    <string name="tab_profile">الملف الشخصي</string>
+    <string name="search_hint">بحث</string>
+    <string name="new_chat">محادثة جديدة</string>
+    <string name="all_communities">الكل</string>
+    <string name="new_community">مجتمع جديد</string>
+
+    <string name="message_hint">رسالة…</string>
+    <string name="reply">رد</string>
+    <string name="react">تفاعل</string>
+    <string name="reply_in_thread">الرد في المحادثة</string>
+    <string name="copy">نسخ</string>
+    <string name="delete">حذف</string>
+    <string name="search_messages">بحث في الرسائل</string>
+    <string name="create_poll">إنشاء استطلاع</string>
+    <string name="room_info">معلومات الغرفة</string>
+
+    <string name="settings">الإعدادات</string>
+    <string name="font">الخط</string>
+    <string name="notifications">الإشعارات</string>
+    <string name="privacy_security">الخصوصية والأمان</string>
+    <string name="storage_data">التخزين والبيانات</string>
+    <string name="version">الإصدار</string>
+    <string name="server">الخادم</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="delete_account">حذف الحساب</string>
+    <string name="delete_account_footer">يؤدي حذف حسابك إلى إزالة كل بياناتك من الخادم بشكل دائم.</string>
+
+    <string name="error_invalid_phone">رقم غير صالح. مثال: +905346065072</string>
+    <string name="error_empty_field">الحقل لا يمكن أن يكون فارغًا</string>
+    <string name="error_network">خطأ في الشبكة</string>
+</resources>

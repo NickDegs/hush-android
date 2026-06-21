@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hush</string>
+    <string name="tagline">あなたのサーバー。あなたのプライバシー。</string>
+
+    <string name="continue_with_phone">電話番号で続行</string>
+    <string name="sign_in_business">ビジネスアカウントでログイン</string>
+    <string name="terms_blurb">続行するとプライバシーポリシーとサポートに同意したことになります。</string>
+
+    <string name="phone_title">電話番号</string>
+    <string name="phone_subtitle">アカウント確認用に6桁のコードを送信します。</string>
+    <string name="phone_hint">5XX XXX XX XX</string>
+    <string name="name_hint">お名前(任意)</string>
+    <string name="send_sms">SMSコードを送信</string>
+
+    <string name="otp_title">コード確認</string>
+    <string name="otp_subtitle">%s に送信した6桁のコードを入力してください。</string>
+    <string name="otp_resend">コードを再送</string>
+    <string name="otp_resend_in">再送 · %d秒</string>
+    <string name="otp_verify">確認して続行</string>
+
+    <string name="tab_chats">チャット</string>
+    <string name="tab_channels">チャンネル</string>
+    <string name="tab_profile">プロフィール</string>
+    <string name="search_hint">検索</string>
+    <string name="new_chat">新規チャット</string>
+    <string name="all_communities">すべて</string>
+    <string name="new_community">新しいコミュニティ</string>
+
+    <string name="message_hint">メッセージ…</string>
+    <string name="reply">返信</string>
+    <string name="react">リアクション</string>
+    <string name="reply_in_thread">スレッドで返信</string>
+    <string name="copy">コピー</string>
+    <string name="delete">削除</string>
+    <string name="search_messages">メッセージを検索</string>
+    <string name="create_poll">投票を作成</string>
+    <string name="room_info">ルーム情報</string>
+
+    <string name="settings">設定</string>
+    <string name="font">フォント</string>
+    <string name="notifications">通知</string>
+    <string name="privacy_security">プライバシーとセキュリティ</string>
+    <string name="storage_data">ストレージとデータ</string>
+    <string name="version">バージョン</string>
+    <string name="server">サーバー</string>
+    <string name="logout">ログアウト</string>
+    <string name="delete_account">アカウント削除</string>
+    <string name="delete_account_footer">アカウントを削除するとサーバー上のすべてのデータが永久に削除されます。</string>
+
+    <string name="error_invalid_phone">電話番号が無効です。例: +905346065072</string>
+    <string name="error_empty_field">フィールドは空にできません</string>
+    <string name="error_network">ネットワークエラー</string>
+</resources>

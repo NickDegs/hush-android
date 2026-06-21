@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hush</string>
+    <string name="tagline">Ton serveur. Ta confidentialité.</string>
+
+    <string name="continue_with_phone">Continuer avec le téléphone</string>
+    <string name="sign_in_business">Se connecter avec un compte pro</string>
+    <string name="terms_blurb">En continuant, tu acceptes notre Politique de confidentialité et nos pages d\'assistance.</string>
+
+    <string name="phone_title">Ton numéro de téléphone</string>
+    <string name="phone_subtitle">Nous t\'enverrons un code à 6 chiffres pour vérifier ton compte.</string>
+    <string name="phone_hint">5XX XXX XX XX</string>
+    <string name="name_hint">Ton prénom (optionnel)</string>
+    <string name="send_sms">Envoyer le code SMS</string>
+
+    <string name="otp_title">Vérifier le code</string>
+    <string name="otp_subtitle">Saisis le code à 6 chiffres envoyé à %s.</string>
+    <string name="otp_resend">Renvoyer le code</string>
+    <string name="otp_resend_in">Renvoyer · %ds</string>
+    <string name="otp_verify">Vérifier et continuer</string>
+
+    <string name="tab_chats">Discussions</string>
+    <string name="tab_channels">Canaux</string>
+    <string name="tab_profile">Profil</string>
+    <string name="search_hint">Rechercher</string>
+    <string name="new_chat">Nouvelle discussion</string>
+    <string name="all_communities">Toutes</string>
+    <string name="new_community">Nouvelle communauté</string>
+
+    <string name="message_hint">Message…</string>
+    <string name="reply">Répondre</string>
+    <string name="react">Réagir</string>
+    <string name="reply_in_thread">Répondre dans le fil</string>
+    <string name="copy">Copier</string>
+    <string name="delete">Supprimer</string>
+    <string name="search_messages">Rechercher des messages</string>
+    <string name="create_poll">Créer un sondage</string>
+    <string name="room_info">Infos du salon</string>
+
+    <string name="settings">Paramètres</string>
+    <string name="font">Police</string>
+    <string name="notifications">Notifications</string>
+    <string name="privacy_security">Confidentialité &amp; Sécurité</string>
+    <string name="storage_data">Stockage &amp; Données</string>
+    <string name="version">Version</string>
+    <string name="server">Serveur</string>
+    <string name="logout">Déconnexion</string>
+    <string name="delete_account">Supprimer le compte</string>
+    <string name="delete_account_footer">La suppression efface définitivement toutes tes données du serveur.</string>
+
+    <string name="error_invalid_phone">Numéro invalide. Exemple : +905346065072</string>
+    <string name="error_empty_field">Le champ ne peut pas être vide</string>
+    <string name="error_network">Erreur réseau</string>
+</resources>

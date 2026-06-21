@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hush</string>
+    <string name="tagline">Ваш сервер. Ваша приватность.</string>
+
+    <string name="continue_with_phone">Продолжить по телефону</string>
+    <string name="sign_in_business">Войти с бизнес-аккаунтом</string>
+    <string name="terms_blurb">Продолжая, вы принимаете нашу Политику конфиденциальности и страницы поддержки.</string>
+
+    <string name="phone_title">Ваш номер телефона</string>
+    <string name="phone_subtitle">Мы отправим 6-значный код для подтверждения.</string>
+    <string name="phone_hint">5XX XXX XX XX</string>
+    <string name="name_hint">Ваше имя (необязательно)</string>
+    <string name="send_sms">Отправить SMS-код</string>
+
+    <string name="otp_title">Подтвердить код</string>
+    <string name="otp_subtitle">Введите 6-значный код, отправленный на %s.</string>
+    <string name="otp_resend">Отправить код снова</string>
+    <string name="otp_resend_in">Повторить · %d с</string>
+    <string name="otp_verify">Подтвердить</string>
+
+    <string name="tab_chats">Чаты</string>
+    <string name="tab_channels">Каналы</string>
+    <string name="tab_profile">Профиль</string>
+    <string name="search_hint">Поиск</string>
+    <string name="new_chat">Новый чат</string>
+    <string name="all_communities">Все</string>
+    <string name="new_community">Новое сообщество</string>
+
+    <string name="message_hint">Сообщение…</string>
+    <string name="reply">Ответить</string>
+    <string name="react">Реакция</string>
+    <string name="reply_in_thread">Ответить в треде</string>
+    <string name="copy">Копировать</string>
+    <string name="delete">Удалить</string>
+    <string name="search_messages">Поиск сообщений</string>
+    <string name="create_poll">Создать опрос</string>
+    <string name="room_info">О комнате</string>
+
+    <string name="settings">Настройки</string>
+    <string name="font">Шрифт</string>
+    <string name="notifications">Уведомления</string>
+    <string name="privacy_security">Приватность и безопасность</string>
+    <string name="storage_data">Хранилище и данные</string>
+    <string name="version">Версия</string>
+    <string name="server">Сервер</string>
+    <string name="logout">Выйти</string>
+    <string name="delete_account">Удалить аккаунт</string>
+    <string name="delete_account_footer">Удаление навсегда стирает все данные с сервера.</string>
+
+    <string name="error_invalid_phone">Неверный номер. Пример: +905346065072</string>
+    <string name="error_empty_field">Поле не может быть пустым</string>
+    <string name="error_network">Ошибка сети</string>
+</resources>

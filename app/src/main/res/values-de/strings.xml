@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hush</string>
+    <string name="tagline">Dein Server. Deine Privatsphäre.</string>
+
+    <string name="continue_with_phone">Mit Telefon fortfahren</string>
+    <string name="sign_in_business">Mit Geschäftskonto anmelden</string>
+    <string name="terms_blurb">Mit dem Fortfahren akzeptierst du unsere Datenschutz- und Support-Seiten.</string>
+
+    <string name="phone_title">Deine Telefonnummer</string>
+    <string name="phone_subtitle">Wir senden dir einen 6-stelligen Code zur Verifizierung.</string>
+    <string name="phone_hint">5XX XXX XX XX</string>
+    <string name="name_hint">Dein Name (optional)</string>
+    <string name="send_sms">SMS-Code senden</string>
+
+    <string name="otp_title">Code bestätigen</string>
+    <string name="otp_subtitle">Gib den 6-stelligen Code ein, den wir an %s gesendet haben.</string>
+    <string name="otp_resend">Code erneut senden</string>
+    <string name="otp_resend_in">Erneut senden · %ds</string>
+    <string name="otp_verify">Bestätigen und fortfahren</string>
+
+    <string name="tab_chats">Chats</string>
+    <string name="tab_channels">Kanäle</string>
+    <string name="tab_profile">Profil</string>
+    <string name="search_hint">Suchen</string>
+    <string name="new_chat">Neuer Chat</string>
+    <string name="all_communities">Alle</string>
+    <string name="new_community">Neue Community</string>
+
+    <string name="message_hint">Nachricht…</string>
+    <string name="reply">Antworten</string>
+    <string name="react">Reagieren</string>
+    <string name="reply_in_thread">Im Thread antworten</string>
+    <string name="copy">Kopieren</string>
+    <string name="delete">Löschen</string>
+    <string name="search_messages">Nachrichten suchen</string>
+    <string name="create_poll">Umfrage erstellen</string>
+    <string name="room_info">Raum-Info</string>
+
+    <string name="settings">Einstellungen</string>
+    <string name="font">Schriftart</string>
+    <string name="notifications">Benachrichtigungen</string>
+    <string name="privacy_security">Datenschutz &amp; Sicherheit</string>
+    <string name="storage_data">Speicher &amp; Daten</string>
+    <string name="version">Version</string>
+    <string name="server">Server</string>
+    <string name="logout">Abmelden</string>
+    <string name="delete_account">Konto löschen</string>
+    <string name="delete_account_footer">Beim Löschen werden alle Daten dauerhaft vom Server entfernt.</string>
+
+    <string name="error_invalid_phone">Ungültige Nummer. Beispiel: +905346065072</string>
+    <string name="error_empty_field">Feld darf nicht leer sein</string>
+    <string name="error_network">Netzwerkfehler</string>
+</resources>

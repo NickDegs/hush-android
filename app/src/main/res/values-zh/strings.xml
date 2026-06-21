@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hush</string>
+    <string name="tagline">您的服务器。您的隐私。</string>
+
+    <string name="continue_with_phone">使用手机号继续</string>
+    <string name="sign_in_business">使用企业账号登录</string>
+    <string name="terms_blurb">继续即表示您接受我们的隐私政策和支持页面。</string>
+
+    <string name="phone_title">您的手机号</string>
+    <string name="phone_subtitle">我们将发送 6 位验证码来验证您的账号。</string>
+    <string name="phone_hint">5XX XXX XX XX</string>
+    <string name="name_hint">您的姓名(可选)</string>
+    <string name="send_sms">发送短信验证码</string>
+
+    <string name="otp_title">验证代码</string>
+    <string name="otp_subtitle">输入发送至 %s 的 6 位验证码。</string>
+    <string name="otp_resend">重新发送</string>
+    <string name="otp_resend_in">重发 · %d秒</string>
+    <string name="otp_verify">验证并继续</string>
+
+    <string name="tab_chats">聊天</string>
+    <string name="tab_channels">频道</string>
+    <string name="tab_profile">个人资料</string>
+    <string name="search_hint">搜索</string>
+    <string name="new_chat">新建聊天</string>
+    <string name="all_communities">全部</string>
+    <string name="new_community">新建社区</string>
+
+    <string name="message_hint">消息…</string>
+    <string name="reply">回复</string>
+    <string name="react">反应</string>
+    <string name="reply_in_thread">在话题中回复</string>
+    <string name="copy">复制</string>
+    <string name="delete">删除</string>
+    <string name="search_messages">搜索消息</string>
+    <string name="create_poll">创建投票</string>
+    <string name="room_info">房间信息</string>
+
+    <string name="settings">设置</string>
+    <string name="font">字体</string>
+    <string name="notifications">通知</string>
+    <string name="privacy_security">隐私与安全</string>
+    <string name="storage_data">存储与数据</string>
+    <string name="version">版本</string>
+    <string name="server">服务器</string>
+    <string name="logout">退出登录</string>
+    <string name="delete_account">删除账号</string>
+    <string name="delete_account_footer">删除账号将永久从服务器移除所有数据。</string>
+
+    <string name="error_invalid_phone">手机号无效。示例:+905346065072</string>
+    <string name="error_empty_field">字段不能为空</string>
+    <string name="error_network">网络错误</string>
+</resources>
