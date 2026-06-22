@@ -145,7 +145,7 @@ fun MatrixLoginScreen(
                         errorText = null
                         scope.launch {
                             val ok = vm.loginWithMatrixCredentials(
-                                homeserver = homeserver.ifBlank { "https://nickdegs.duckdns.org" },
+                                homeserver = homeserver.ifBlank { "https://chat.nickdegs.com" },
                                 username = username.trim(),
                                 password = password,
                             )

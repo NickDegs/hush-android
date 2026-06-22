@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 
 object Network {
-    private const val BASE_URL = "https://nickdegs.com/"
+    private const val BASE_URL = "https://chat.nickdegs.com/"
 
     private val json = Json { ignoreUnknownKeys = true; encodeDefaults = false }
 
