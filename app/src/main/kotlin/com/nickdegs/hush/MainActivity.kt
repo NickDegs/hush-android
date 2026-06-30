@@ -137,7 +137,7 @@ private fun ConnectionRequiredScreen(onRetry: () -> Unit) {
             modifier = Modifier.padding(32.dp)
         ) {
             androidx.compose.material3.Icon(
-                androidx.compose.material.icons.Icons.Filled.CloudOff, null,
+                androidx.compose.material.icons.Icons.Filled.Lock, null,
                 modifier = Modifier.size(64.dp),
                 tint = Color.White.copy(alpha = 0.8f)
             )
