@@ -55,6 +55,7 @@ class MatrixClient(
     private val http = OkHttpClient.Builder()
         .connectTimeout(15, TimeUnit.SECONDS)
         .readTimeout(40, TimeUnit.SECONDS)
+        .addInterceptor(com.nickdegs.hush.core.net.HushNet.signatureInterceptor)
         .build()
 
     var syncToken: String? = null
