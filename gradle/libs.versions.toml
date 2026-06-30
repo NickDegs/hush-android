@@ -15,6 +15,8 @@ okhttp = "4.12.0"
 coilCompose = "2.7.0"
 datastore = "1.1.1"
 billing = "7.1.1"
+playIntegrity = "1.4.0"
+coroutinesPlayServices = "1.9.0"
 firebaseBom = "33.7.0"
 googleServices = "4.4.2"
 junit = "4.13.2"
@@ -43,6 +45,8 @@ okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor",
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilCompose" }
 datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
 billing-ktx = { group = "com.android.billingclient", name = "billing-ktx", version.ref = "billing" }
+play-integrity = { group = "com.google.android.play", name = "integrity", version.ref = "playIntegrity" }
+coroutines-play-services = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "coroutinesPlayServices" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging-ktx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

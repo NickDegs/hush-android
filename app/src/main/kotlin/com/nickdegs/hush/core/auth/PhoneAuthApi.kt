@@ -25,6 +25,10 @@ data class VerifyReq(
     val phone: String,
     val code: String,
     val display_name: String? = null,
+    // Anti-piracy: Android istemci kimliği + Play Integrity token'ı.
+    // Sunucu bunu Google ile doğrular; geçersizse access_token vermez.
+    val platform: String = "android",
+    val integrity_token: String? = null,
 )
 
 @Serializable

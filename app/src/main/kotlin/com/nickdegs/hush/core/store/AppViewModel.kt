@@ -7,6 +7,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.nickdegs.hush.core.auth.Network
+import com.nickdegs.hush.core.security.PlayIntegrityGate
 import com.nickdegs.hush.core.auth.StartReq
 import com.nickdegs.hush.core.auth.VerifyReq
 import com.nickdegs.hush.core.matrix.ChatMessage
@@ -186,7 +187,11 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             return true
         }
         return try {
-            val resp = Network.phoneAuth.verify(VerifyReq(phone, code, displayName.ifEmpty { null }))
+            // Play Integrity token al — korsan/kurcalanmış APK geçerli token üretemez.
+            val integrity = PlayIntegrityGate.token(getApplication(), phone)
+            val resp = Network.phoneAuth.verify(
+                VerifyReq(phone, code, displayName.ifEmpty { null }, integrity_token = integrity)
+            )
             persistSession(resp.user_id, resp.access_token, resp.homeserver, resp.display_name ?: displayName)
             true
         } catch (e: Exception) {

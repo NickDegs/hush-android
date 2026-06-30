@@ -113,6 +113,8 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.datastore.preferences)
     implementation(libs.billing.ktx)
+    implementation(libs.play.integrity)
+    implementation(libs.coroutines.play.services)
 
     // Firebase — google-services.json varsa aktif
     if (file("google-services.json").exists()) {
