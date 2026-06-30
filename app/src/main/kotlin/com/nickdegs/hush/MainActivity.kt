@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.unit.dp
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
@@ -137,7 +139,7 @@ private fun ConnectionRequiredScreen(onRetry: () -> Unit) {
             modifier = Modifier.padding(32.dp)
         ) {
             androidx.compose.material3.Icon(
-                androidx.compose.material.icons.Icons.Filled.Lock, null,
+                Icons.Filled.Lock, null,
                 modifier = Modifier.size(64.dp),
                 tint = Color.White.copy(alpha = 0.8f)
             )
