@@ -105,9 +105,9 @@ class MatrixClient(
         http.newCall(req).execute().use { if (it.isSuccessful) it.body?.string() else null }
     } catch (e: Exception) { null }
 
-    /** mxc:// → indirilebilir HTTP URL (Coil için).
+    /** mxc:// to indirilebilir HTTP URL (Coil için).
      *  Matrix 1.11+ authenticated media: v1 endpoint + Authorization Bearer ŞART
-     *  (eski /_matrix/media/v3/* artık 404). Bearer'ı Coil interceptor ekler. */
+     *  (eski v3 media endpointleri artık 404). Bearer'ı Coil interceptor ekler. */
     fun mxcToHttp(mxc: String?, thumb: Boolean = false, size: Int = 800): String? {
         if (mxc == null || !mxc.startsWith("mxc://")) return null
         val parts = mxc.removePrefix("mxc://").split("/", limit = 2)
