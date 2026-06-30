@@ -36,6 +36,9 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         val isBusinessMode: Boolean = false,
         val businessSlug: String? = null,
         val errorMessage: String? = null,
+        // Güvenlik: açılışta token sunucuda doğrulanmadan içeri girilmez.
+        val isValidating: Boolean = false,   // doğrulama sürüyor → splash
+        val needsConnection: Boolean = false // ağ yok → "internet gerekli" (offline engeli)
     )
 
     private val _state = MutableStateFlow(UiState())
@@ -64,23 +67,58 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             val token = prefs[keyToken]
             val hs = prefs[keyHomeserver]
             if (!uid.isNullOrEmpty() && !token.isNullOrEmpty() && !hs.isNullOrEmpty()) {
-                _state.value = UiState(
-                    isAuthenticated = true,
-                    userId = uid, accessToken = token, homeserver = hs,
-                    displayName = prefs[keyName]
-                )
-                startSync()
+                validateAndEnter(uid, token, hs, prefs[keyName])
             }
+        }
+    }
+
+    /**
+     * Açılış güvenlik kapısı: stored token sunucuda doğrulanmadan içeri GİRİLMEZ.
+     * - VALID → home + sync
+     * - INVALID → oturum temizlenir → login (korsan/geçersiz token engellenir)
+     * - NO_NETWORK → "internet gerekli" ekranı (offline çalışmaz)
+     */
+    private suspend fun validateAndEnter(uid: String, token: String, hs: String, name: String?) {
+        _state.value = _state.value.copy(
+            userId = uid, accessToken = token, homeserver = hs, displayName = name,
+            isValidating = true, needsConnection = false, isAuthenticated = false
+        )
+        val client = MatrixClient(hs, token, uid)
+        when (client.validateToken()) {
+            MatrixClient.TokenStatus.VALID -> {
+                matrix = client
+                _state.value = _state.value.copy(isAuthenticated = true, isValidating = false)
+                startSync(client)
+            }
+            MatrixClient.TokenStatus.INVALID -> {
+                getApplication<Application>().dataStore.edit { it.clear() }
+                _state.value = UiState()   // login'e düş
+            }
+            MatrixClient.TokenStatus.NO_NETWORK -> {
+                _state.value = _state.value.copy(isValidating = false, needsConnection = true)
+            }
+        }
+    }
+
+    /** "İnternet gerekli" ekranındaki Tekrar Dene. */
+    fun retryValidation() {
+        val s = _state.value
+        val uid = s.userId; val token = s.accessToken; val hs = s.homeserver
+        if (uid != null && token != null && hs != null) {
+            viewModelScope.launch { validateAndEnter(uid, token, hs, s.displayName) }
         }
     }
 
     // MARK: - Matrix sync / messaging
 
-    private fun startSync() {
-        val s = _state.value
-        val hs = s.homeserver; val token = s.accessToken; val uid = s.userId
-        if (hs == null || token == null || uid == null) return
-        val client = MatrixClient(hs, token, uid).also { matrix = it }
+    private fun startSync(existing: MatrixClient? = null) {
+        val client = existing ?: run {
+            val s = _state.value
+            val hs = s.homeserver; val token = s.accessToken; val uid = s.userId
+            if (hs == null || token == null || uid == null) return
+            MatrixClient(hs, token, uid)
+        }
+        matrix = client
         syncJob?.cancel()
         syncJob = viewModelScope.launch {
             var first = true

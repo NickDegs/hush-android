@@ -60,6 +60,35 @@ class MatrixClient(
     var syncToken: String? = null
         private set
 
+    /** Token doğrulama sonucu (kimlik kilidi + offline engeli için). */
+    enum class TokenStatus { VALID, INVALID, NO_NETWORK }
+
+    /**
+     * Token'ı sunucuda doğrular (whoami). Geçerli kimlik + internet ŞART.
+     * Korsan APK token'sız/geçersiz token'la içeri giremez, internetsiz çalışamaz.
+     */
+    suspend fun validateToken(): TokenStatus = withContext(Dispatchers.IO) {
+        try {
+            http.newCall(
+                Request.Builder().url("$base/_matrix/client/v3/account/whoami")
+                    .header("Authorization", "Bearer $token").get().build()
+            ).execute().use { resp ->
+                when {
+                    resp.isSuccessful -> {
+                        val who = resp.body?.string()?.let {
+                            json.parseToJsonElement(it).jsonObject["user_id"]?.jsonPrimitive?.contentOrNull
+                        }
+                        if (who == userId) TokenStatus.VALID else TokenStatus.INVALID
+                    }
+                    resp.code == 401 || resp.code == 403 -> TokenStatus.INVALID
+                    else -> TokenStatus.NO_NETWORK
+                }
+            }
+        } catch (e: Exception) {
+            TokenStatus.NO_NETWORK   // ağ yok → offline = giriş yok
+        }
+    }
+
     private fun get(path: String): String? = run(Request.Builder().url(base + path)
         .header("Authorization", "Bearer $token").get().build())
 

@@ -6,6 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
@@ -51,6 +55,10 @@ class MainActivity : ComponentActivity() {
 private fun HushNavGraph(viewModel: AppViewModel) {
     val nav = rememberNavController()
     val state by viewModel.uiState.collectAsState()
+
+    // Güvenlik kapısı: doğrulanmadan / internetsiz içeri girilmez.
+    if (state.isValidating) { ValidatingSplash(); return }
+    if (state.needsConnection) { ConnectionRequiredScreen(onRetry = { viewModel.retryValidation() }); return }
 
     val startDest = if (state.isAuthenticated) "home" else "login"
 
@@ -102,6 +110,57 @@ private fun HushNavGraph(viewModel: AppViewModel) {
             val roomName = URLDecoder.decode(backStack.arguments?.getString("roomName").orEmpty(), "UTF-8")
             ChatScreen(vm = viewModel, roomId = roomId, roomName = roomName,
                 onBack = { nav.popBackStack() })
+        }
+    }
+}
+
+@androidx.compose.runtime.Composable
+private fun ValidatingSplash() {
+    androidx.compose.foundation.layout.Box(
+        Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.Center
+    ) {
+        com.nickdegs.hush.ui.components.LiquidBackground()
+        androidx.compose.material3.CircularProgressIndicator(
+            color = com.nickdegs.hush.ui.theme.Violet
+        )
+    }
+}
+
+@androidx.compose.runtime.Composable
+private fun ConnectionRequiredScreen(onRetry: () -> Unit) {
+    androidx.compose.foundation.layout.Box(
+        Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.Center
+    ) {
+        com.nickdegs.hush.ui.components.LiquidBackground()
+        androidx.compose.foundation.layout.Column(
+            horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
+            modifier = Modifier.padding(32.dp)
+        ) {
+            androidx.compose.material3.Icon(
+                androidx.compose.material.icons.Icons.Filled.CloudOff, null,
+                modifier = Modifier.size(64.dp),
+                tint = Color.White.copy(alpha = 0.8f)
+            )
+            androidx.compose.foundation.layout.Spacer(Modifier.height(16.dp))
+            androidx.compose.material3.Text(
+                "İnternet bağlantısı gerekli",
+                style = androidx.compose.material3.MaterialTheme.typography.titleMedium,
+                color = Color.White
+            )
+            androidx.compose.foundation.layout.Spacer(Modifier.height(8.dp))
+            androidx.compose.material3.Text(
+                "Hush kimliğini doğrulamak için bağlantı şart. Çevrimdışı kullanılamaz.",
+                style = androidx.compose.material3.MaterialTheme.typography.bodySmall,
+                color = Color.White.copy(alpha = 0.65f),
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center
+            )
+            androidx.compose.foundation.layout.Spacer(Modifier.height(24.dp))
+            androidx.compose.material3.Button(
+                onClick = onRetry,
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    containerColor = com.nickdegs.hush.ui.theme.Violet
+                )
+            ) { androidx.compose.material3.Text("Tekrar Dene") }
         }
     }
 }
