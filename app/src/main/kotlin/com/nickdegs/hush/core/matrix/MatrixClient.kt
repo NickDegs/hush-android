@@ -105,14 +105,16 @@ class MatrixClient(
         http.newCall(req).execute().use { if (it.isSuccessful) it.body?.string() else null }
     } catch (e: Exception) { null }
 
-    /** mxc:// → indirilebilir HTTP URL (Coil için). */
+    /** mxc:// → indirilebilir HTTP URL (Coil için).
+     *  Matrix 1.11+ authenticated media: v1 endpoint + Authorization Bearer ŞART
+     *  (eski /_matrix/media/v3/* artık 404). Bearer'ı Coil interceptor ekler. */
     fun mxcToHttp(mxc: String?, thumb: Boolean = false, size: Int = 800): String? {
         if (mxc == null || !mxc.startsWith("mxc://")) return null
         val parts = mxc.removePrefix("mxc://").split("/", limit = 2)
         if (parts.size != 2) return null
         return if (thumb)
-            "$base/_matrix/media/v3/thumbnail/${parts[0]}/${parts[1]}?width=$size&height=$size&method=crop"
-        else "$base/_matrix/media/v3/download/${parts[0]}/${parts[1]}"
+            "$base/_matrix/client/v1/media/thumbnail/${parts[0]}/${parts[1]}?width=$size&height=$size&method=scale"
+        else "$base/_matrix/client/v1/media/download/${parts[0]}/${parts[1]}"
     }
 
     /** Sync — ilk çağrı timeout=0 (anında), sonrası long-poll. Oda listesini döner. */

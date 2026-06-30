@@ -20,11 +20,24 @@ object HushNet {
     // Sunucudaki nginx kuralıyla BİREBİR aynı olmalı.
     const val CLIENT_SIGNATURE = "99a12fabf9ee0c2c7d8cce3ad3182be6a4490dbc17ce894b"
 
+    /** Güncel access_token — Coil medya istekleri (authenticated media v1) Bearer için.
+     *  Oturum açılınca/doğrulanınca AppViewModel günceller. */
+    @Volatile
+    var mediaBearer: String? = null
+
     val signatureInterceptor = Interceptor { chain ->
         val req = chain.request().newBuilder()
             .header("X-Hush-Client", CLIENT_SIGNATURE)
             .header("X-Hush-Platform", "android")
             .build()
         chain.proceed(req)
+    }
+
+    /** Coil medya isteklerine Authorization Bearer ekler (v1 authenticated media). */
+    val mediaAuthInterceptor = Interceptor { chain ->
+        val b = mediaBearer
+        val builder = chain.request().newBuilder()
+        if (!b.isNullOrEmpty()) builder.header("Authorization", "Bearer $b")
+        chain.proceed(builder.build())
     }
 }

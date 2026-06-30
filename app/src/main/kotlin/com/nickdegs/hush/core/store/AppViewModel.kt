@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.nickdegs.hush.core.auth.Network
 import com.nickdegs.hush.core.security.PlayIntegrityGate
+import com.nickdegs.hush.core.net.HushNet
 import com.nickdegs.hush.core.auth.StartReq
 import com.nickdegs.hush.core.auth.VerifyReq
 import com.nickdegs.hush.core.matrix.ChatMessage
@@ -88,10 +89,12 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         when (client.validateToken()) {
             MatrixClient.TokenStatus.VALID -> {
                 matrix = client
+                HushNet.mediaBearer = token   // Coil authenticated media için
                 _state.value = _state.value.copy(isAuthenticated = true, isValidating = false)
                 startSync(client)
             }
             MatrixClient.TokenStatus.INVALID -> {
+                HushNet.mediaBearer = null
                 getApplication<Application>().dataStore.edit { it.clear() }
                 _state.value = UiState()   // login'e düş
             }
@@ -258,6 +261,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             prefs[keyHomeserver] = hs
             if (!name.isNullOrEmpty()) prefs[keyName] = name
         }
+        HushNet.mediaBearer = token   // Coil authenticated media için
         _state.value = UiState(
             isAuthenticated = true,
             userId = uid, accessToken = token, homeserver = hs, displayName = name
@@ -268,6 +272,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     fun logout() {
         viewModelScope.launch {
             syncJob?.cancel(); matrix = null
+            HushNet.mediaBearer = null
             _rooms.value = emptyList(); _messages.value = emptyList(); _syncDone.value = false
             getApplication<Application>().dataStore.edit { it.clear() }
             _state.value = UiState()

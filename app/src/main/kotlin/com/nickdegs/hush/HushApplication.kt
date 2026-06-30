@@ -12,12 +12,14 @@ class HushApplication : Application(), ImageLoaderFactory {
         // Firebase otomatik init (google-services plugin tarafından)
     }
 
-    /** Coil de mxc medya isteklerine X-Hush-Client başlığını eklesin (web erişim kilidi). */
+    /** Coil mxc medya isteklerine X-Hush-Client (web kilidi) + Authorization Bearer
+     *  (authenticated media v1) ekler — yoksa foto/avatar 404, açılmaz. */
     override fun newImageLoader(): ImageLoader =
         ImageLoader.Builder(this)
             .okHttpClient(
                 OkHttpClient.Builder()
                     .addInterceptor(HushNet.signatureInterceptor)
+                    .addInterceptor(HushNet.mediaAuthInterceptor)
                     .build()
             )
             .build()
