@@ -9,8 +9,14 @@ import androidx.lifecycle.viewModelScope
 import com.nickdegs.hush.core.auth.Network
 import com.nickdegs.hush.core.auth.StartReq
 import com.nickdegs.hush.core.auth.VerifyReq
+import com.nickdegs.hush.core.matrix.ChatMessage
+import com.nickdegs.hush.core.matrix.MatrixClient
+import com.nickdegs.hush.core.matrix.MatrixRoom
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -35,6 +41,16 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     private val _state = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _state.asStateFlow()
 
+    // MARK: - Matrix messaging
+    private var matrix: MatrixClient? = null
+    private var syncJob: Job? = null
+    private val _rooms = MutableStateFlow<List<MatrixRoom>>(emptyList())
+    val rooms: StateFlow<List<MatrixRoom>> = _rooms.asStateFlow()
+    private val _messages = MutableStateFlow<List<ChatMessage>>(emptyList())
+    val messages: StateFlow<List<ChatMessage>> = _messages.asStateFlow()
+    private val _syncDone = MutableStateFlow(false)
+    val syncDone: StateFlow<Boolean> = _syncDone.asStateFlow()
+
     private val Application.dataStore by preferencesDataStore("hush_secure")
     private val keyUserId = stringPreferencesKey("uid")
     private val keyToken = stringPreferencesKey("at")
@@ -53,8 +69,59 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
                     userId = uid, accessToken = token, homeserver = hs,
                     displayName = prefs[keyName]
                 )
+                startSync()
             }
         }
+    }
+
+    // MARK: - Matrix sync / messaging
+
+    private fun startSync() {
+        val s = _state.value
+        val hs = s.homeserver; val token = s.accessToken; val uid = s.userId
+        if (hs == null || token == null || uid == null) return
+        val client = MatrixClient(hs, token, uid).also { matrix = it }
+        syncJob?.cancel()
+        syncJob = viewModelScope.launch {
+            var first = true
+            while (isActive) {
+                try {
+                    val rooms = client.sync(timeout = if (first) 0 else 30000)
+                    if (first || rooms.isNotEmpty()) _rooms.value = rooms
+                    _syncDone.value = true
+                    first = false
+                } catch (e: Exception) {
+                    _syncDone.value = true
+                    delay(5000)
+                }
+            }
+        }
+    }
+
+    fun mediaUrl(mxc: String?, thumb: Boolean = false): String? = matrix?.mxcToHttp(mxc, thumb)
+
+    fun openRoom(roomId: String) {
+        _messages.value = emptyList()
+        viewModelScope.launch {
+            matrix?.messages(roomId)?.let { _messages.value = it }
+        }
+    }
+
+    fun sendMessage(roomId: String, text: String) {
+        val t = text.trim(); if (t.isEmpty()) return
+        val me = _state.value.userId ?: ""
+        // İyimser ekle
+        _messages.value = _messages.value + ChatMessage(
+            id = "local-${System.nanoTime()}", sender = me, body = t,
+            ts = System.currentTimeMillis(), mine = true
+        )
+        viewModelScope.launch { matrix?.sendText(roomId, t) }
+    }
+
+    suspend fun startDirectChat(userId: String): String? {
+        val id = matrix?.createDirect(userId) ?: return null
+        matrix?.sync(0)?.let { _rooms.value = it }
+        return id
     }
 
     // MARK: - Phone Auth
@@ -152,10 +219,13 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             isAuthenticated = true,
             userId = uid, accessToken = token, homeserver = hs, displayName = name
         )
+        startSync()
     }
 
     fun logout() {
         viewModelScope.launch {
+            syncJob?.cancel(); matrix = null
+            _rooms.value = emptyList(); _messages.value = emptyList(); _syncDone.value = false
             getApplication<Application>().dataStore.edit { it.clear() }
             _state.value = UiState()
         }

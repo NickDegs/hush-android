@@ -19,8 +19,11 @@ import com.nickdegs.hush.ui.auth.LoginScreen
 import com.nickdegs.hush.ui.auth.MatrixLoginScreen
 import com.nickdegs.hush.ui.auth.OtpVerifyScreen
 import com.nickdegs.hush.ui.auth.PhoneSignupScreen
+import com.nickdegs.hush.ui.chat.ChatScreen
 import com.nickdegs.hush.ui.home.HomeScreen
 import com.nickdegs.hush.ui.theme.HushTheme
+import java.net.URLDecoder
+import java.net.URLEncoder
 
 class MainActivity : ComponentActivity() {
     private val viewModel: AppViewModel by viewModels()
@@ -88,7 +91,17 @@ private fun HushNavGraph(viewModel: AppViewModel) {
             )
         }
         composable("home") {
-            HomeScreen(vm = viewModel)
+            HomeScreen(vm = viewModel, onOpenRoom = { roomId, roomName ->
+                val rid = URLEncoder.encode(roomId, "UTF-8")
+                val rn = URLEncoder.encode(roomName, "UTF-8")
+                nav.navigate("chat/$rid/$rn")
+            })
+        }
+        composable("chat/{roomId}/{roomName}") { backStack ->
+            val roomId = URLDecoder.decode(backStack.arguments?.getString("roomId").orEmpty(), "UTF-8")
+            val roomName = URLDecoder.decode(backStack.arguments?.getString("roomName").orEmpty(), "UTF-8")
+            ChatScreen(vm = viewModel, roomId = roomId, roomName = roomName,
+                onBack = { nav.popBackStack() })
         }
     }
 }
