@@ -32,7 +32,12 @@ import com.nickdegs.hush.ui.theme.Violet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(vm: AppViewModel, onOpenRoom: (String, String) -> Unit) {
+fun HomeScreen(
+    vm: AppViewModel,
+    onOpenRoom: (String, String) -> Unit,
+    onOpenSpaces: () -> Unit = {},
+    onOpenPro: () -> Unit = {},
+) {
     var tab by remember { mutableIntStateOf(0) }
 
     Box(Modifier.fillMaxSize()) {
@@ -57,7 +62,7 @@ fun HomeScreen(vm: AppViewModel, onOpenRoom: (String, String) -> Unit) {
                 when (tab) {
                     0 -> RoomList(vm, onOpenRoom)
                     1 -> RoomList(vm, onOpenRoom)
-                    2 -> Profile(vm)
+                    2 -> Profile(vm, onOpenSpaces, onOpenPro)
                 }
             }
         }
@@ -131,16 +136,32 @@ private fun RoomRow(room: MatrixRoom, onClick: () -> Unit) {
 }
 
 @Composable
-private fun Profile(vm: AppViewModel) {
+private fun Profile(vm: AppViewModel, onOpenSpaces: () -> Unit, onOpenPro: () -> Unit) {
     val state by vm.uiState.collectAsStateWithLifecycle()
+    val tier by vm.billing.tier.collectAsStateWithLifecycle()
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 28.dp)
+        ) {
             Icon(Icons.Filled.AccountCircle, null,
                 modifier = Modifier.size(80.dp), tint = Violet)
             Spacer(Modifier.height(12.dp))
             Text(state.displayName ?: state.userId ?: "—",
                 style = MaterialTheme.typography.titleMedium, color = Color.White)
-            Spacer(Modifier.height(28.dp))
+            if (tier != com.nickdegs.hush.core.billing.HushTier.NONE) {
+                Text(tier.display, color = MaterialTheme.colorScheme.secondary,
+                    style = MaterialTheme.typography.labelMedium)
+            }
+            Spacer(Modifier.height(24.dp))
+            Button(onClick = onOpenSpaces, modifier = Modifier.fillMaxWidth()) {
+                Text("Topluluk Alanları")
+            }
+            Spacer(Modifier.height(10.dp))
+            OutlinedButton(onClick = onOpenPro, modifier = Modifier.fillMaxWidth()) {
+                Text(if (tier == com.nickdegs.hush.core.billing.HushTier.NONE) "Hush Pro'ya Geç" else "Aboneliğim")
+            }
+            Spacer(Modifier.height(24.dp))
             OutlinedButton(onClick = { vm.logout() }) {
                 Text(stringResource(R.string.logout))
             }

@@ -105,7 +105,14 @@ private fun HushNavGraph(viewModel: AppViewModel) {
                 val rid = URLEncoder.encode(roomId, "UTF-8")
                 val rn = URLEncoder.encode(roomName, "UTF-8")
                 nav.navigate("chat/$rid/$rn")
-            })
+            }, onOpenSpaces = { nav.navigate("spaces") }, onOpenPro = { nav.navigate("pro") })
+        }
+        composable("spaces") {
+            com.nickdegs.hush.ui.spaces.SpacesScreen(
+                vm = viewModel, onBack = { nav.popBackStack() }, onOpenPro = { nav.navigate("pro") })
+        }
+        composable("pro") {
+            com.nickdegs.hush.ui.pro.HushProScreen(vm = viewModel, onClose = { nav.popBackStack() })
         }
         composable("chat/{roomId}/{roomName}") { backStack ->
             val roomId = URLDecoder.decode(backStack.arguments?.getString("roomId").orEmpty(), "UTF-8")

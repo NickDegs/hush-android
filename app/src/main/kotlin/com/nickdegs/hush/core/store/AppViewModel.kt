@@ -56,6 +56,9 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     private val _syncDone = MutableStateFlow(false)
     val syncDone: StateFlow<Boolean> = _syncDone.asStateFlow()
 
+    // Kademeli abonelik (Google Play Billing) — auth olunca başlar.
+    val billing = com.nickdegs.hush.core.billing.BillingManager(app)
+
     private val Application.dataStore by preferencesDataStore("hush_secure")
     private val keyUserId = stringPreferencesKey("uid")
     private val keyToken = stringPreferencesKey("at")
@@ -91,6 +94,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
                 matrix = client
                 HushNet.mediaBearer = token   // Coil authenticated media için
                 _state.value = _state.value.copy(isAuthenticated = true, isValidating = false)
+                billing.start()               // abonelik/kademe durumunu yükle
                 startSync(client)
             }
             MatrixClient.TokenStatus.INVALID -> {

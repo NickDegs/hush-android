@@ -28,4 +28,13 @@ object Network {
         .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
         .build()
         .create(PhoneAuthApi::class.java)
+
+    // Spaces: platform="android" gibi default değerlerin de gönderilmesi gerekir (encodeDefaults=true).
+    private val spacesJson = Json { ignoreUnknownKeys = true; encodeDefaults = true }
+    val spaces: com.nickdegs.hush.core.spaces.SpacesApi = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .client(ok)
+        .addConverterFactory(spacesJson.asConverterFactory("application/json".toMediaType()))
+        .build()
+        .create(com.nickdegs.hush.core.spaces.SpacesApi::class.java)
 }
