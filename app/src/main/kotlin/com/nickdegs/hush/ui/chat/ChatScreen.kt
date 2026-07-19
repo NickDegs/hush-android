@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Videocam
 import androidx.compose.material3.*
@@ -59,6 +60,9 @@ fun ChatScreen(vm: AppViewModel, roomId: String, roomName: String, onBack: () ->
                         }
                         IconButton(onClick = { vm.call.startCall(roomId, roomName, video = true) }) {
                             Icon(Icons.Filled.Videocam, "Görüntülü ara", tint = Color.White)
+                        }
+                        IconButton(onClick = { vm.groupCall.joinOrStart(roomId, video = true) }) {
+                            Icon(Icons.Filled.Groups, "Grup araması", tint = Color.White)
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(

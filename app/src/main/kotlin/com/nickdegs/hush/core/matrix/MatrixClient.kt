@@ -239,6 +239,17 @@ class MatrixClient(
         put("/_matrix/client/v3/rooms/${enc(roomId)}/send/$type/$txn", contentJson) != null
     }
 
+    /** State event gönder (grup arama üyeliği m.call.member — stateKey = userId). */
+    suspend fun sendStateEvent(roomId: String, type: String, stateKey: String, contentJson: String): Boolean = withContext(Dispatchers.IO) {
+        put("/_matrix/client/v3/rooms/${enc(roomId)}/state/$type/${enc(stateKey)}", contentJson) != null
+    }
+
+    /** Oda state event'leri (grup arama üyelerini keşfetmek için). */
+    suspend fun roomState(roomId: String): List<JsonObject> = withContext(Dispatchers.IO) {
+        val raw = get("/_matrix/client/v3/rooms/${enc(roomId)}/state") ?: return@withContext emptyList()
+        json.parseToJsonElement(raw).jsonArray.map { it.jsonObject }
+    }
+
     /** Synapse'ten TURN/STUN credential al (arama NAT-geçişi). */
     suspend fun turnServer(): TurnCreds? = withContext(Dispatchers.IO) {
         val raw = get("/_matrix/client/v3/voip/turnServer") ?: return@withContext null

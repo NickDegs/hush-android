@@ -43,6 +43,7 @@ class MainActivity : ComponentActivity() {
                     androidx.compose.foundation.layout.Box(Modifier.fillMaxSize()) {
                         HushNavGraph(viewModel)
                         com.nickdegs.hush.ui.call.CallOverlay(viewModel)
+                        com.nickdegs.hush.ui.call.GroupCallOverlay(viewModel)
                     }
                 }
             }

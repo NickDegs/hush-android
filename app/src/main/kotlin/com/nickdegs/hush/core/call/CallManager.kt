@@ -65,7 +65,7 @@ class CallManager(private val appContext: Context) {
     val localVideoTrack = MutableStateFlow<VideoTrack?>(null)
 
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
-    private val factory: PeerConnectionFactory
+    val factory: PeerConnectionFactory   // GroupCallManager ile paylaşılır (initialize tek sefer)
 
     private var client: MatrixClient? = null
     private var myUserId: String = ""
@@ -185,6 +185,8 @@ class CallManager(private val appContext: Context) {
 
     private fun handleSignaling(ev: CallEvent) {
         if (ev.sender == myUserId) return
+        // Grup arama event'leri (conf_id'li) veya üyelik → 1:1 yöneticisi yoksayar
+        if (ev.type == "m.call.member" || ev.content["conf_id"] != null) return
         val cid = ev.content["call_id"]?.jsonPrimitive?.contentOrNull
         when (ev.type) {
             "m.call.invite" -> {

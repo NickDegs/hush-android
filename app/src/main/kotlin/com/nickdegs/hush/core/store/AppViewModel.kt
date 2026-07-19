@@ -59,6 +59,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     // Kademeli abonelik (Google Play Billing) — auth olunca başlar.
     val billing = com.nickdegs.hush.core.billing.BillingManager(app)
     val call = com.nickdegs.hush.core.call.CallManager(app)
+    val groupCall = com.nickdegs.hush.core.call.GroupCallManager(app, call.factory, call.eglBase)
 
     private val Application.dataStore by preferencesDataStore("hush_secure")
     private val keyUserId = stringPreferencesKey("uid")
@@ -128,7 +129,8 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             MatrixClient(hs, token, uid)
         }
         matrix = client
-        call.attach(client, client.userId)   // gelen çağrı sinyalleşmesini topla
+        call.attach(client, client.userId)        // 1:1 çağrı sinyalleşmesi
+        groupCall.attach(client, client.userId)   // grup arama sinyalleşmesi
         syncJob?.cancel()
         syncJob = viewModelScope.launch {
             var first = true
