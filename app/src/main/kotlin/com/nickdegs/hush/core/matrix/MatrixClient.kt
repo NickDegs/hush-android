@@ -28,6 +28,21 @@ data class MatrixRoom(
     val isDirect: Boolean = false,
 )
 
+/** Gelen çağrı sinyalleşme event'i (sync'ten yüzeye çıkar). */
+data class CallEvent(
+    val roomId: String,
+    val type: String,          // m.call.invite | answer | candidates | hangup
+    val content: JsonObject,
+    val sender: String,
+)
+
+/** VoIP TURN/STUN credential (/voip/turnServer). */
+data class TurnCreds(
+    val uris: List<String>,
+    val username: String,
+    val password: String,
+)
+
 /** Tek mesaj (iOS ChatMessage karşılığı). */
 data class ChatMessage(
     val id: String,
@@ -60,6 +75,9 @@ class MatrixClient(
 
     var syncToken: String? = null
         private set
+
+    /** Sync sırasında yakalanan m.call.* event'leri (CallManager toplar). */
+    val callEvents = kotlinx.coroutines.flow.MutableSharedFlow<CallEvent>(extraBufferCapacity = 64)
 
     /** Token doğrulama sonucu (kimlik kilidi + offline engeli için). */
     enum class TokenStatus { VALID, INVALID, NO_NETWORK }
@@ -154,10 +172,20 @@ class MatrixClient(
             var lastMsg: String? = null; var lastTs = 0L
             room["timeline"]?.jsonObject?.get("events")?.jsonArray?.forEach { ev ->
                 val e = ev.jsonObject
-                if (e["type"]?.jsonPrimitive?.contentOrNull == "m.room.message") {
+                val et = e["type"]?.jsonPrimitive?.contentOrNull
+                if (et == "m.room.message") {
                     val c = e["content"]?.jsonObject
                     lastMsg = c?.get("body")?.jsonPrimitive?.contentOrNull
                     lastTs = e["origin_server_ts"]?.jsonPrimitive?.longOrNull ?: lastTs
+                } else if (et != null && et.startsWith("m.call.")) {
+                    callEvents.tryEmit(
+                        CallEvent(
+                            roomId = roomId,
+                            type = et,
+                            content = e["content"]?.jsonObject ?: JsonObject(emptyMap()),
+                            sender = e["sender"]?.jsonPrimitive?.contentOrNull ?: "",
+                        )
+                    )
                 }
             }
             val unread = room["unread_notifications"]?.jsonObject?.get("notification_count")?.jsonPrimitive?.intOrNull ?: 0
@@ -203,6 +231,21 @@ class MatrixClient(
         val body = """{"is_direct":true,"preset":"trusted_private_chat","invite":["$userId"]}"""
         val raw = post("/_matrix/client/v3/createRoom", body) ?: return@withContext null
         json.parseToJsonElement(raw).jsonObject["room_id"]?.jsonPrimitive?.contentOrNull
+    }
+
+    /** Genel event gönder (m.call.* sinyalleşme için). contentJson = ham JSON gövde. */
+    suspend fun sendEvent(roomId: String, type: String, contentJson: String): Boolean = withContext(Dispatchers.IO) {
+        val txn = "m${System.nanoTime()}"
+        put("/_matrix/client/v3/rooms/${enc(roomId)}/send/$type/$txn", contentJson) != null
+    }
+
+    /** Synapse'ten TURN/STUN credential al (arama NAT-geçişi). */
+    suspend fun turnServer(): TurnCreds? = withContext(Dispatchers.IO) {
+        val raw = get("/_matrix/client/v3/voip/turnServer") ?: return@withContext null
+        val o = json.parseToJsonElement(raw).jsonObject
+        val uris = o["uris"]?.jsonArray?.mapNotNull { it.jsonPrimitive.contentOrNull } ?: return@withContext null
+        if (uris.isEmpty()) return@withContext null
+        TurnCreds(uris, o["username"]?.jsonPrimitive?.contentOrNull ?: "", o["password"]?.jsonPrimitive?.contentOrNull ?: "")
     }
 
     private fun enc(s: String) = java.net.URLEncoder.encode(s, "UTF-8").replace("+", "%20")

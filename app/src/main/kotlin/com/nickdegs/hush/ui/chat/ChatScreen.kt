@@ -9,7 +9,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Mic
+import androidx.compose.material.icons.filled.Videocam
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -49,6 +51,14 @@ fun ChatScreen(vm: AppViewModel, roomId: String, roomName: String, onBack: () ->
                     navigationIcon = {
                         IconButton(onClick = onBack) {
                             Icon(Icons.AutoMirrored.Filled.ArrowBack, "Geri")
+                        }
+                    },
+                    actions = {
+                        IconButton(onClick = { vm.call.startCall(roomId, roomName, video = false) }) {
+                            Icon(Icons.Filled.Call, "Sesli ara", tint = Color.White)
+                        }
+                        IconButton(onClick = { vm.call.startCall(roomId, roomName, video = true) }) {
+                            Icon(Icons.Filled.Videocam, "Görüntülü ara", tint = Color.White)
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(

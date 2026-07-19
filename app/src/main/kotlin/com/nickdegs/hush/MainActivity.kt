@@ -40,7 +40,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             HushTheme {
                 Surface(Modifier.fillMaxSize(), color = Color.Black) {
-                    HushNavGraph(viewModel)
+                    androidx.compose.foundation.layout.Box(Modifier.fillMaxSize()) {
+                        HushNavGraph(viewModel)
+                        com.nickdegs.hush.ui.call.CallOverlay(viewModel)
+                    }
                 }
             }
         }

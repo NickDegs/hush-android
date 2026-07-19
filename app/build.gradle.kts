@@ -21,8 +21,8 @@ android {
         applicationId = "com.nickdegs.hush"
         minSdk = 26
         targetSdk = 35
-        versionCode = 6
-        versionName = "1.2.0"
+        versionCode = 7
+        versionName = "1.2.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
@@ -115,6 +115,7 @@ dependencies {
     implementation(libs.billing.ktx)
     implementation(libs.play.integrity)
     implementation(libs.coroutines.play.services)
+    implementation(libs.webrtc)
 
     // Firebase — google-services.json varsa aktif
     if (file("google-services.json").exists()) {
