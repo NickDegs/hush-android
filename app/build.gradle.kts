@@ -21,8 +21,10 @@ android {
         applicationId = "com.nickdegs.hush"
         minSdk = 26
         targetSdk = 35
-        versionCode = 8
-        versionName = "1.2.2"
+        // CI'da VERSION_CODE env'inden otomatik (100 + run_number) → Play duplicate önlenir.
+        // Yerelde env yoksa 8'e düşer.
+        versionCode = System.getenv("VERSION_CODE")?.toIntOrNull() ?: 8
+        versionName = "1.2.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
