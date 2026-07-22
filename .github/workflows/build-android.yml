@@ -18,9 +18,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      # versionCode otomatik artan (100 + run_number) → Play duplicate reddini önler
-      VERSION_CODE: ${{ github.run_number + 100 }}
 
     steps:
       - name: Checkout
@@ -62,6 +59,9 @@ jobs:
           else
             echo "⚠ google-services.json yok — FCM olmadan derlenecek"
           fi
+
+      - name: versionCode hesapla (100 + run_number, Play duplicate önleyici)
+        run: echo "VERSION_CODE=$((100 + ${{ github.run_number }}))" >> "$GITHUB_ENV"
 
       - name: Build AAB (release)
         run: ./gradlew bundleRelease --no-daemon --stacktrace
