@@ -14,12 +14,13 @@ on:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   JAVA_VERSION: "21"
-  # versionCode otomatik artan (100 + run_number) → Play duplicate versionCode reddini önler
-  VERSION_CODE: ${{ github.run_number + 100 }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # versionCode otomatik artan (100 + run_number) → Play duplicate reddini önler
+      VERSION_CODE: ${{ github.run_number + 100 }}
 
     steps:
       - name: Checkout
